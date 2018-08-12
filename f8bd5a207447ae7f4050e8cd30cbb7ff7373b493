@@ -1,0 +1,1 @@
+{"jobID":"d53fa875-2cfe-ee62-ec6f-13bf898954b0","spec":{"type":"policy","cause":{"Message":"","User":""},"spec":{"default:deployment/srtsignin-web-app":{"add":{"automated":"true"},"remove":{}}}},"result":null}
