@@ -1,0 +1,32 @@
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: srtsignin-web-app
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: srtsignin-web-app
+    spec:
+      containers:
+      - name: web-app
+        image: 'cjblink1/srtsignin-web-app:1aeba0edeb898b7d65f2779a1cbd7783a3346b2a'
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: srtsignin-web-app-service
+  labels:
+    name: srtsignin-web-app-service
+spec:
+  ports:
+  - port: 80
+    targetPort: 80
+    protocol: TCP
+  selector:
+    app: srtsignin
+  type: ClusterIP
