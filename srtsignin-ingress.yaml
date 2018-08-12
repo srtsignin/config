@@ -10,5 +10,5 @@ spec:
     http:
       paths:
       - backend:
-          serviceName: srtsignin-web-app
+          serviceName: srtsignin-web-app-service
           servicePort: 80
