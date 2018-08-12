@@ -1,0 +1,14 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: srtsignin
+spec:
+  tls:
+  - secretName: srtsignin-certs
+  rules:
+  - host: srtsign.in
+    http:
+      paths:
+      - backend:
+          serviceName: srtsignin-web-app
+          servicePort: 80
