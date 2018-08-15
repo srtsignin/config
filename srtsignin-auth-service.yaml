@@ -1,32 +1,32 @@
-apiVersion: extensions/v1beta1
-kind: Deployment
-metadata:
-  name: srtsignin-auth-service
-spec:
-  replicas: 3
-  template:
-    metadata:
-      labels:
-        app: srtsignin-auth-service
-    spec:
-      containers:
-        - name: srtsignin-auth-service
-          image: cjblink1/srtsignin-auth-service:2c13f35e5151ab77dfb78b0a2f0fd1f417601c73
-          ports:
-            - containerPort: 80
+# apiVersion: extensions/v1beta1
+# kind: Deployment
+# metadata:
+#   name: srtsignin-auth-service
+# spec:
+#   replicas: 3
+#   template:
+#     metadata:
+#       labels:
+#         app: srtsignin-auth-service
+#     spec:
+#       containers:
+#         - name: srtsignin-auth-service
+#           image: cjblink1/srtsignin-auth-service:2c13f35e5151ab77dfb78b0a2f0fd1f417601c73
+#           ports:
+#             - containerPort: 80
 
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: srtsignin-auth-service
-  labels:
-    name: srtsignin-auth-service
-spec:
-  ports:
-    - port: 80
-      targetPort: 80
-      protocol: TCP
-  selector:
-    app: srtsignin-auth-service
-  type: ClusterIP
+# ---
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: srtsignin-auth-service
+#   labels:
+#     name: srtsignin-auth-service
+# spec:
+#   ports:
+#     - port: 80
+#       targetPort: 80
+#       protocol: TCP
+#   selector:
+#     app: srtsignin-auth-service
+#   type: ClusterIP
