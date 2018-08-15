@@ -1,3 +1,4 @@
+---
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
@@ -10,18 +11,17 @@ spec:
         app: srtsignin-auth-service
     spec:
       containers:
-        - name: srtsignin-auth-service
-          image: cjblink1/srtsignin-auth-service:4045fece6d2a44e2e3e078d2d185cc83a54e2d1b
-          volumeMounts:
-            - name: secrets
-              mountPath: /AuthService/bin/secrets
-          ports:
-            - containerPort: 80
-      volumes:
+      - name: srtsignin-auth-service
+        image: cjblink1/srtsignin-auth-service:291bf11ed60d73b00e10ff4909b301c5adb1d1d8
+        volumeMounts:
         - name: secrets
-          secret:
-            secretName: srtsignin-auth-secret
-
+          mountPath: /AuthService/bin/secrets
+        ports:
+        - containerPort: 80
+      volumes:
+      - name: secrets
+        secret:
+          secretName: srtsignin-auth-secret
 ---
 apiVersion: v1
 kind: Service
@@ -31,9 +31,9 @@ metadata:
     name: srtsignin-auth-service
 spec:
   ports:
-    - port: 80
-      targetPort: 80
-      protocol: TCP
+  - port: 80
+    targetPort: 80
+    protocol: TCP
   selector:
     app: srtsignin-auth-service
   type: ClusterIP
