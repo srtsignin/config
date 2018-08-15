@@ -9,6 +9,11 @@ spec:
   - host: srtsign.in
     http:
       paths:
-      - backend:
+      - path: /
+        backend:
           serviceName: srtsignin-web-app-service
+          servicePort: 80
+      - path: /api/auth
+        backend:
+          serviceName: srtsignin-auth-service
           servicePort: 80
