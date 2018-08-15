@@ -12,8 +12,15 @@
 #       containers:
 #         - name: srtsignin-auth-service
 #           image: cjblink1/srtsignin-auth-service:2c13f35e5151ab77dfb78b0a2f0fd1f417601c73
+#           volumeMounts:
+#             - name: secrets
+#               mountPath: /AuthService/bin/secrets
 #           ports:
 #             - containerPort: 80
+#       volumes:
+#         - name: secrets
+#           secret:
+#             secretName: srtsignin-auth-secret
 
 # ---
 # apiVersion: v1
