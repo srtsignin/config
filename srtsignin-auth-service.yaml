@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: srtsignin-auth-service
-        image: cjblink1/srtsignin-auth-service:291bf11ed60d73b00e10ff4909b301c5adb1d1d8
+        image: cjblink1/srtsignin-auth-service:564fa90fc6e22558650963f9a7f6e09de0703729
         volumeMounts:
         - name: secrets
           mountPath: /AuthService/bin/secrets
