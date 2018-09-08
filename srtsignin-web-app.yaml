@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: web-app
-        image: 'cjblink1/srtsignin-web-app:c692a3f9d6996eb6cc85f5b7dab655b7b8e5fe7e'
+        image: 'cjblink1/srtsignin-web-app:bebf8fe6aa57b4c5b2eba1c779832139bc2b4d1e'
         ports:
         - containerPort: 80
 ---
