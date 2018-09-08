@@ -2,6 +2,7 @@ apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: srtsignin
+  annotations: ingress.kubernetes.io/rewrite-target: /
 spec:
   tls:
   - secretName: srtsignin-certs
@@ -13,7 +14,7 @@ spec:
         backend:
           serviceName: srtsignin-web-app-service
           servicePort: 80
-      - path: /api/auth
+      - path: /api/role
         backend:
-          serviceName: srtsignin-auth-service
+          serviceName: srtsignin-role-service
           servicePort: 80
