@@ -52,6 +52,7 @@ spec:
         - --configmap=$(POD_NAMESPACE)/nginx-conf
         - --profiling=false
         - --annotations-prefix=ingress.kubernetes.io
+        - --enable-ssl-passthrough
       serviceAccountName: nginx-ingress-serviceaccount
 ---
 apiVersion: v1
