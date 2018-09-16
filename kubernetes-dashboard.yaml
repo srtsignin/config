@@ -14,16 +14,16 @@
 
 # ------------------- Dashboard Secret ------------------- #
 
-apiVersion: v1
-kind: Secret
-metadata:
-  labels:
-    k8s-app: kubernetes-dashboard
-  name: kubernetes-dashboard-certs
-  namespace: kube-system
-type: Opaque
+# apiVersion: v1
+# kind: Secret
+# metadata:
+#   labels:
+#     k8s-app: kubernetes-dashboard
+#   name: kubernetes-dashboard-certs
+#   namespace: kube-system
+# type: Opaque
 
----
+# ---
 # ------------------- Dashboard Service Account ------------------- #
 
 apiVersion: v1
@@ -114,7 +114,8 @@ spec:
         - containerPort: 8443
           protocol: TCP
         args:
-          - --auto-generate-certificates
+          - --tls-cert-file=tls.crt
+          - --tls-key-file=tls.key
           # Uncomment the following line to manually specify Kubernetes API server Host
           # If not specified, Dashboard will attempt to auto discover the API server and connect
           # to it. Uncomment only if the default does not work.

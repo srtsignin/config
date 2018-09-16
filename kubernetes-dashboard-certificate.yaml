@@ -1,0 +1,19 @@
+apiVersion: certmanager.k8s.io/v1alpha1
+kind: Certificate
+metadata:
+  name: kubernetes-dashboard-certificate
+  namespace: kube-system
+spec:
+  secretName: kubernetes-dashboard-certs
+  issuerRef:
+    name: letsencrypt-prod-cluster-issuer
+    kind: ClusterIssuer
+  commonName: dash.srtsign.in
+  dnsNames:
+  - dash.srtsign.in
+  acme:
+    config:
+    - http01:
+        ingressClass: nginx
+      domains:
+      - dash.srtsign.in
