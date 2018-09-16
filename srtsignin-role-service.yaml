@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: srtsignin-role-service
-        image: cjblink1/srtsignin-role-service:492f8b1c0799aa029e98a08faf51b7d6110fdd29
+        image: cjblink1/srtsignin-role-service:1d887b8de4d8e5800a2ad9502e70270499740a7c
 
         volumeMounts:
         - name: secrets
