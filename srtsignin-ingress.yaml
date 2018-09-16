@@ -1,8 +1,9 @@
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: srtsignin
-  annotations: ingress.kubernetes.io/rewrite-target: /
+  name: "srtsignin"
+  annotations: 
+    ingress.kubernetes.io/rewrite-target: /
 spec:
   tls:
   - secretName: srtsignin-certs

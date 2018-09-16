@@ -2,6 +2,7 @@ apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: kubernetes-dashboard
+  namespace: kube-system
   annotations:
     ingress.kubernetes.io/ssl-passthrough: "true"
     ingress.kubernetes.io/force-ssl-redirect: "true"
