@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: srtsignin-active-user-service-spike
-        image: cjblink1/srtsignin-active-user-service-spike:4901d9947e6d855453505139bd6c3b927c27c706
+        image: cjblink1/srtsignin-active-user-service-spike:deploy-to-kubernetes-34f9fce990f6a551fe13e53b0229ddc7bce5553a
         ports:
         - containerPort: 65001
 ---
