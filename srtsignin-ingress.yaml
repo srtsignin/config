@@ -19,3 +19,7 @@ spec:
         backend:
           serviceName: srtsignin-role-service
           servicePort: 80
+      - path: /api/active-users
+        backend:
+          serviceName: srtsignin-active-user-service-spike
+          servicePort: 80
