@@ -11,10 +11,6 @@ spec:
   - host: srtsign.in
     http:
       paths:
-      - path: /
-        backend:
-          serviceName: srtsignin-web-app-service
-          servicePort: 80
       - path: /api/role
         backend:
           serviceName: srtsignin-role-service
@@ -23,3 +19,10 @@ spec:
         backend:
           serviceName: srtsignin-active-user-service-spike
           servicePort: 80
+      - path: /
+        backend:
+          serviceName: srtsignin-web-app-service
+          servicePort: 80
+  backend:
+    serviceName: srtsignin-web-app-service
+    servicePort: 80
