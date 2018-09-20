@@ -4,6 +4,7 @@ metadata:
   name: "srtsignin"
   annotations: 
     ingress.kubernetes.io/rewrite-target: /
+    ingress.kubernetes.io/enable-cors: "true"
 spec:
   tls:
   - secretName: srtsignin-certs
