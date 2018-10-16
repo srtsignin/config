@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: srtsignin-cardfire
-        image: cjblink1/srtsignin-cardfire:master-72adae2f68dcf1bc151b12101b86bfab23968c07
+        image: cjblink1/srtsignin-cardfire:master-8523a272f7b07d0f3da1df1a20db2c6b5b8ea8c0
         ports:
         - containerPort: 3001
         volumeMounts:
