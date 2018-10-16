@@ -14,7 +14,7 @@ spec:
     http:
       paths:
       - path: /api/cardfire
-        serviceName: sertsignin-cardfire
+        serviceName: srtsignin-cardfire
         servicePort: 80
       - path: /api/role
         backend:
