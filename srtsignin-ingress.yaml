@@ -13,6 +13,9 @@ spec:
   - host: srtsign.in
     http:
       paths:
+      - path: /api/cardfire
+        serviceName: sertsignin-cardfire
+        servicePort: 80
       - path: /api/role
         backend:
           serviceName: srtsignin-role-service
