@@ -15,12 +15,12 @@ spec:
     spec:
       containers:
       - name: srtsignin-cardfire
-        image: cjblink1/srtsignin-cardfire:master-8523a272f7b07d0f3da1df1a20db2c6b5b8ea8c0
+        image: cjblink1/srtsignin-cardfire:master-c32b6eb9b279e891a2f4ff88c05700f783fdbd4a
         ports:
         - containerPort: 3001
         volumeMounts:
         - name: secrets
-          mountPath: /runner/res
+          mountPath: /res
       volumes:
       - name: secrets
         secret:
