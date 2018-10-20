@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: srtsignin-active-user-service
-        image: cjblink1/srtsignin-active-user-service:master-2ae06c48fa662fdafb0a3ac66aa54d17bc960bbe
+        image: cjblink1/srtsignin-active-user-service:master-da9ac423b13be88355e51e8d68fcc22439facffb
         ports:
         - containerPort: 3000
 ---
