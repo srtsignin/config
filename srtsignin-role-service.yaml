@@ -2,7 +2,7 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: srtsignin-role-service
+  name: srtsignin-role-service-v1
   annotations:
     flux.weave.works/automated: 'true'
 spec:
@@ -11,7 +11,7 @@ spec:
   template:
     metadata:
       labels:
-        app: srtsignin-role-service
+        app: srtsignin-role-service-v1
     spec:
       containers:
       - name: srtsignin-role-service
@@ -25,19 +25,19 @@ spec:
       volumes:
       - name: secrets
         secret:
-          secretName: srtsignin-role-secret
+          secretName: srtsignin-role-secret-v1
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: srtsignin-role-service
+  name: srtsignin-role-service-v1
   labels:
-    name: srtsignin-role-service
+    name: srtsignin-role-service-v1
 spec:
   ports:
   - port: 80
     targetPort: 80
     protocol: TCP
   selector:
-    app: srtsignin-role-service
+    app: srtsignin-role-service-v1
   type: ClusterIP

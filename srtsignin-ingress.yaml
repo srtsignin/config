@@ -5,7 +5,7 @@ metadata:
   annotations: 
     ingress.kubernetes.io/rewrite-target: /
     ingress.kubernetes.io/enable-cors: "true"
-    ingress.kubernetes.io/cors-allow-headers: "DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Authorization,RosefireToken,CardfireToken,StudentToken"
+    ingress.kubernetes.io/cors-allow-headers: "DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Authorization,AuthToken"
 spec:
   tls:
   - secretName: srtsignin-certs
@@ -13,21 +13,17 @@ spec:
   - host: srtsign.in
     http:
       paths:
-      - path: /api/cardfire
+      - path: /api/v1/cardfire
         backend:
-          serviceName: srtsignin-cardfire
+          serviceName: srtsignin-cardfire-v1
           servicePort: 80
-      - path: /api/role
+      - path: /api/v1/role
         backend:
-          serviceName: srtsignin-role-service
+          serviceName: srtsignin-role-service-v1
           servicePort: 80
-      - path: /api/active-users
+      - path: /api/v1/active
         backend:
-          serviceName: srtsignin-active-user-service-spike
-          servicePort: 80
-      - path: /api/active
-        backend:
-          serviceName: srtsignin-active-user-service
+          serviceName: srtsignin-active-user-service-v1
           servicePort: 80
       - path: /
         backend:

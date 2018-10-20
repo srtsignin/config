@@ -2,7 +2,7 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: srtsignin-cardfire
+  name: srtsignin-cardfire-v1
   annotations:
     flux.weave.works/automated: 'true'
 spec:
@@ -11,7 +11,7 @@ spec:
   template:
     metadata:
       labels:
-        app: srtsignin-cardfire
+        app: srtsignin-cardfire-v1
     spec:
       containers:
       - name: srtsignin-cardfire
@@ -24,19 +24,19 @@ spec:
       volumes:
       - name: secrets
         secret:
-          secretName: srtsignin-cardfire-secret
+          secretName: srtsignin-cardfire-secret-v1
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: srtsignin-cardfire
+  name: srtsignin-cardfire-v1
   labels:
-    name: srtsignin-cardfire
+    name: srtsignin-cardfire-v1
 spec:
   ports:
   - port: 80
     targetPort: 3001
     protocol: TCP
   selector:
-    app: srtsignin-cardfire
+    app: srtsignin-cardfire-v1
   type: ClusterIP
