@@ -2,3 +2,4 @@ rosefire.secret = <ROSEFIRE_SECRET>
 neo4j.url = <BOLT_URL>
 neo4j.username = <USERNAME>
 neo4j.password =  <PASSWORD>
+cardfire.url = <CARDFIRE_URL>

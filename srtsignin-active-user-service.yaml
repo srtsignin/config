@@ -2,16 +2,17 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: srtsignin-active-user-service-v1
+  name: srtsignin-active-user-service
   annotations:
     flux.weave.works/automated: 'true'
+  namespace: v1
 spec:
   replicas: 1
   revisionHistoryLimit: 1
   template:
     metadata:
       labels:
-        app: srtsignin-active-user-service-v1
+        app: srtsignin-active-user-service
     spec:
       containers:
       - name: srtsignin-active-user-service
@@ -22,14 +23,15 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: srtsignin-active-user-service-v1
+  name: srtsignin-active-user-service
   labels:
-    name: srtsignin-active-user-service-v1
+    name: srtsignin-active-user-service
+  namespace: v1
 spec:
   ports:
   - port: 80
     targetPort: 3000
     protocol: TCP
   selector:
-    app: srtsignin-active-user-service-v1
+    app: srtsignin-active-user-service
   type: ClusterIP

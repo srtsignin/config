@@ -15,15 +15,15 @@ spec:
       paths:
       - path: /api/v1/cardfire
         backend:
-          serviceName: srtsignin-cardfire-v1
+          serviceName: v1/srtsignin-cardfire
           servicePort: 80
       - path: /api/v1/role
         backend:
-          serviceName: srtsignin-role-service-v1
+          serviceName: v1/srtsignin-role-service
           servicePort: 80
       - path: /api/v1/active
         backend:
-          serviceName: srtsignin-active-user-service-v1
+          serviceName: v1/srtsignin-active-user-service
           servicePort: 80
       - path: /
         backend:
