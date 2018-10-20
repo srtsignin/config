@@ -33,3 +33,41 @@ spec:
   selector:
     app: srtsignin-web-app
   type: ClusterIP
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: srtsignin-web-app
+  annotations:
+    flux.weave.works/automated: 'true'
+  namespace: stage
+spec:
+  replicas: 1
+  revisionHistoryLimit: 1
+  template:
+    metadata:
+      labels:
+        app: srtsignin-web-app
+    spec:
+      containers:
+      - name: web-app
+        image: 'cjblink1/srtsignin-web-app:master-610c136fc021b24998b0d846036ba233616e1df3'
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: srtsignin-web-app-service
+  labels:
+    name: srtsignin-web-app-service
+  namespace: stage
+spec:
+  ports:
+  - port: 80
+    targetPort: 80
+    protocol: TCP
+  selector:
+    app: srtsignin-web-app
+  type: ClusterIP
+
