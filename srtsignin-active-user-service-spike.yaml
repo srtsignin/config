@@ -1,35 +1,37 @@
----
-apiVersion: extensions/v1beta1
-kind: Deployment
-metadata:
-  name: srtsignin-active-user-service-spike
-  annotations:
-    flux.weave.works/automated: 'true'
-spec:
-  replicas: 1
-  revisionHistoryLimit: 1
-  template:
-    metadata:
-      labels:
-        app: srtsignin-active-user-service-spike
-    spec:
-      containers:
-      - name: srtsignin-active-user-service-spike
-        image: cjblink1/srtsignin-active-user-service-spike:more-user-info-7bf04d2e59c01d4aaa6a195099734cc2c88aedf1
-        ports:
-        - containerPort: 65001
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: srtsignin-active-user-service-spike
-  labels:
-    name: srtsignin-active-user-service-spike
-spec:
-  ports:
-  - port: 80
-    targetPort: 65001
-    protocol: TCP
-  selector:
-    app: srtsignin-active-user-service-spike
-  type: ClusterIP
+# Deprecated 
+
+#---
+# apiVersion: extensions/v1beta1
+# kind: Deployment
+# metadata:
+#   name: srtsignin-active-user-service-spike
+#   annotations:
+#     flux.weave.works/automated: 'true'
+# spec:
+#   replicas: 1
+#   revisionHistoryLimit: 1
+#   template:
+#     metadata:
+#       labels:
+#         app: srtsignin-active-user-service-spike
+#     spec:
+#       containers:
+#       - name: srtsignin-active-user-service-spike
+#         image: cjblink1/srtsignin-active-user-service-spike:more-user-info-7bf04d2e59c01d4aaa6a195099734cc2c88aedf1
+#         ports:
+#         - containerPort: 65001
+# ---
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: srtsignin-active-user-service-spike
+#   labels:
+#     name: srtsignin-active-user-service-spike
+# spec:
+#   ports:
+#   - port: 80
+#     targetPort: 65001
+#     protocol: TCP
+#   selector:
+#     app: srtsignin-active-user-service-spike
+#   type: ClusterIP

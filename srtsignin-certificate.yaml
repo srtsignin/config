@@ -2,7 +2,6 @@ apiVersion: certmanager.k8s.io/v1alpha1
 kind: Certificate
 metadata:
   name: srtsignin-certificate
-  namespace: default
 spec:
   secretName: srtsignin-certs
   issuerRef:
@@ -17,3 +16,23 @@ spec:
         ingressClass: nginx
       domains:
       - srtsign.in
+---
+apiVersion: certmanager.k8s.io/v1alpha1
+kind: Certificate
+metadata:
+  name: srtsignin-certificate
+  namespace: stage
+spec:
+  secretName: srtsignin-certs
+  issuerRef:
+    name: letsencrypt-prod-cluster-issuer
+    kind: ClusterIssuer
+  commonName: stage.srtsign.in
+  dnsNames:
+  - stage.srtsign.in
+  acme:
+    config:
+    - http01:
+        ingressClass: nginx
+      domains:
+      - stage.srtsign.in

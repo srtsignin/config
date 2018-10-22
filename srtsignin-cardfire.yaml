@@ -40,3 +40,47 @@ spec:
   selector:
     app: srtsignin-cardfire
   type: ClusterIP
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: srtsignin-cardfire
+  annotations:
+    flux.weave.works/automated: 'true'
+  namespace: stage
+spec:
+  replicas: 1
+  revisionHistoryLimit: 1
+  template:
+    metadata:
+      labels:
+        app: srtsignin-cardfire
+    spec:
+      containers:
+      - name: srtsignin-cardfire
+        image: cjblink1/srtsignin-cardfire:master-c32b6eb9b279e891a2f4ff88c05700f783fdbd4a
+        ports:
+        - containerPort: 3001
+        volumeMounts:
+        - name: secrets
+          mountPath: /res
+      volumes:
+      - name: secrets
+        secret:
+          secretName: srtsignin-cardfire-secret
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: srtsignin-cardfire
+  labels:
+    name: srtsignin-cardfire
+  namespace: stage
+spec:
+  ports:
+  - port: 80
+    targetPort: 3001
+    protocol: TCP
+  selector:
+    app: srtsignin-cardfire
+  type: ClusterIP

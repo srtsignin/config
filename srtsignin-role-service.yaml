@@ -16,7 +16,6 @@ spec:
       containers:
       - name: srtsignin-role-service
         image: cjblink1/srtsignin-role-service:8acc2c83f3183827ac4407b5853ff78892289973
-
         volumeMounts:
         - name: secrets
           mountPath: /RoleService/bin/secrets
@@ -33,6 +32,50 @@ metadata:
   name: srtsignin-role-service
   labels:
     name: srtsignin-role-service
+spec:
+  ports:
+  - port: 80
+    targetPort: 80
+    protocol: TCP
+  selector:
+    app: srtsignin-role-service
+  type: ClusterIP
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: srtsignin-role-service
+  annotations:
+    flux.weave.works/automated: 'true'
+  namespace: stage
+spec:
+  replicas: 1
+  revisionHistoryLimit: 1
+  template:
+    metadata:
+      labels:
+        app: srtsignin-role-service
+    spec:
+      containers:
+      - name: srtsignin-role-service
+        image: cjblink1/srtsignin-role-service:8acc2c83f3183827ac4407b5853ff78892289973
+        volumeMounts:
+        - name: secrets
+          mountPath: /RoleService/bin/secrets
+        ports:
+        - containerPort: 80
+      volumes:
+      - name: secrets
+        secret:
+          secretName: srtsignin-role-secret
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: srtsignin-role-service
+  labels:
+    name: srtsignin-role-service
+  namespace: stage
 spec:
   ports:
   - port: 80
