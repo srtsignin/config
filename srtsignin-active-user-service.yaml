@@ -2,85 +2,85 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-name: srtsignin-active-user-service
-annotations:
-flux.weave.works/automated: 'true'
+  name: srtsignin-active-user-service
+  annotations:
+    flux.weave.works/automated: 'true'
 spec:
-replicas: 1
-revisionHistoryLimit: 1
-template:
-metadata:
-labels:
-app: srtsignin-active-user-service
-spec:
-containers:
-- name: srtsignin-active-user-service
-image: cjblink1/srtsignin-active-user-service:master-fb3a93540a92edb2dea07086a4e53a2cb322eb43
-volumeMounts:
-- name: secrets
-mountPath: /config
-ports:
-- containerPort: 3000
-volumes:
-- name: secrets
-secret:
-secretName: srtsignin-active-users-secret
+  replicas: 1
+  revisionHistoryLimit: 1
+  template:
+    metadata:
+      labels:
+        app: srtsignin-active-user-service
+    spec:
+      containers:
+      - name: srtsignin-active-user-service
+        image: cjblink1/srtsignin-active-user-service:master-fb3a93540a92edb2dea07086a4e53a2cb322eb43
+        volumeMounts:
+        - name: secrets
+          mountPath: /config
+        ports:
+        - containerPort: 3000
+      volumes:
+      - name: secrets
+        secret:
+          secretName: srtsignin-active-users-secret
 ---
 apiVersion: v1
 kind: Service
 metadata:
-name: srtsignin-active-user-service
-labels:
-name: srtsignin-active-user-service
+  name: srtsignin-active-user-service
+  labels:
+    name: srtsignin-active-user-service
 spec:
-ports:
-- port: 80
-targetPort: 3000
-protocol: TCP
-selector:
-app: srtsignin-active-user-service
-type: ClusterIP
+  ports:
+  - port: 80
+    targetPort: 3000
+    protocol: TCP
+  selector:
+    app: srtsignin-active-user-service
+  type: ClusterIP
 ---
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-name: srtsignin-active-user-service
-annotations:
-flux.weave.works/automated: 'true'
-namespace: stage
+  name: srtsignin-active-user-service
+  annotations:
+    flux.weave.works/automated: 'true'
+  namespace: stage
 spec:
-replicas: 1
-revisionHistoryLimit: 1
-template:
-metadata:
-labels:
-app: srtsignin-active-user-service
-spec:
-containers:
-- name: srtsignin-active-user-service
-image: cjblink1/srtsignin-active-user-service:master-fb3a93540a92edb2dea07086a4e53a2cb322eb43
-volumeMounts:
-- name: secrets
-mountPath: /config
-ports:
-- containerPort: 3000
-volumes:
-- name: secrets
-secret:
-secretName: srtsignin-active-users-secret
+  replicas: 1
+  revisionHistoryLimit: 1
+  template:
+    metadata:
+      labels:
+        app: srtsignin-active-user-service
+    spec:
+      containers:
+      - name: srtsignin-active-user-service
+        image: cjblink1/srtsignin-active-user-service:master-fb3a93540a92edb2dea07086a4e53a2cb322eb43
+        volumeMounts:
+        - name: secrets
+          mountPath: /config
+        ports:
+        - containerPort: 3000
+      volumes:
+      - name: secrets
+        secret:
+          secretName: srtsignin-active-users-secret
 ---
 apiVersion: v1
 kind: Service
 metadata:
-name: srtsignin-active-user-service
-labels:
-name: srtsignin-active-user-service
-namespace: stage
+  name: srtsignin-active-user-service
+  labels:
+    name: srtsignin-active-user-service
+  namespace: stage
 spec:
-ports:
-- port: 80
-targetPort: 3000
-protocol: TCP
-selector:
-app: srtsignin-active-user-service
-type: ClusterIP
+  ports:
+  - port: 80
+    targetPort: 3000
+    protocol: TCP
+  selector:
+    app: srtsignin-active-user-service
+  type: ClusterIP
