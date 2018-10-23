@@ -14,6 +14,10 @@ spec:
   - host: srtsign.in
     http:
       paths:
+      - path: /api/data
+        backend:
+          serviceName: srtsignin-data-service
+          servicePort: 80
       - path: /api/cardfire
         backend:
           serviceName: srtsignin-cardfire
@@ -47,6 +51,10 @@ spec:
   - host: stage.srtsign.in
     http:
       paths:
+      - path: /api/data
+        backend:
+          serviceName: srtsignin-data-service
+          servicePort: 80
       - path: /api/cardfire
         backend:
           serviceName: srtsignin-cardfire
