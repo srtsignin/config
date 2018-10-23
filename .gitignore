@@ -3,3 +3,4 @@ auth-keys.properties
 neo4j-startup.txt
 secrets-cf.properties
 active-users-config.json
+data-service-conf.json

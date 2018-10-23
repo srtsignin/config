@@ -1,0 +1,86 @@
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: srtsignin-data-service
+  annotations:
+    flux.weave.works/automated: 'true'
+spec:
+  replicas: 1
+  revisionHistoryLimit: 1
+  template:
+    metadata:
+      labels:
+        app: srtsignin-data-service
+    spec:
+      containers:
+      - name: srtsignin-data-service
+        image: cjblink1/srtsignin-data-service:5d94e16908d1ea1463b3806c9b8eb49dc84a9065
+        ports:
+        - containerPort: 3000
+        volumeMounts:
+        - name: secrets
+          mountPath: /config
+      volumes:
+      - name: secrets
+        secret:
+          secretName: srtsignin-data-service-secret
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: srtsignin-data-service
+  labels:
+    name: srtsignin-data-service
+spec:
+  ports:
+  - port: 80
+    targetPort: 3000
+    protocol: TCP
+  selector:
+    app: srtsignin-data-service
+  type: ClusterIP
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: srtsignin-data-service
+  annotations:
+    flux.weave.works/automated: 'true'
+  namespace: stage
+spec:
+  replicas: 1
+  revisionHistoryLimit: 1
+  template:
+    metadata:
+      labels:
+        app: srtsignin-data-service
+    spec:
+      containers:
+      - name: srtsignin-data-service
+        image: cjblink1/srtsignin-data-service:5d94e16908d1ea1463b3806c9b8eb49dc84a9065
+        ports:
+        - containerPort: 3000
+        volumeMounts:
+        - name: secrets
+          mountPath: /config
+      volumes:
+      - name: secrets
+        secret:
+          secretName: srtsignin-data-service-secret
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: srtsignin-data-service
+  labels:
+    name: srtsignin-data-service
+  namespace: stage
+spec:
+  ports:
+  - port: 80
+    targetPort: 3000
+    protocol: TCP
+  selector:
+    app: srtsignin-data-service
+  type: ClusterIP
