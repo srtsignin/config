@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: srtsignin-role-service
-        image: cjblink1/srtsignin-role-service:8acc2c83f3183827ac4407b5853ff78892289973
+        image: cjblink1/srtsignin-role-service:bc06d0711f7ab3e4861cf28ea5dce4ce463aeefc
         volumeMounts:
         - name: secrets
           mountPath: /RoleService/bin/secrets
@@ -58,7 +58,7 @@ spec:
     spec:
       containers:
       - name: srtsignin-role-service
-        image: cjblink1/srtsignin-role-service:8acc2c83f3183827ac4407b5853ff78892289973
+        image: cjblink1/srtsignin-role-service:bc06d0711f7ab3e4861cf28ea5dce4ce463aeefc
         volumeMounts:
         - name: secrets
           mountPath: /RoleService/bin/secrets
