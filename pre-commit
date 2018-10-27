@@ -1,0 +1,11 @@
+#!/bin/sh
+#
+# Hides the secrets before a commit so they encrypted secrets are up to date.
+# Please place in your repo's .git/hooks directory.
+# Called by "git commit" with no arguments.
+echo "Hiding Secrets before commit"
+git secret hide
+git add ./secrets
+git add ./stage-secrets
+echo "Secrets hidden and added, continuing commit"
+exit 0
