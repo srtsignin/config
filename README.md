@@ -37,3 +37,10 @@ Our project is using the [git-secret](http://git-secret.io/) tool, which allows 
     and the output will show all the secrets currently being handled by `git-secret`
 
 #### Hiding/Revealing Secrets
+
+- In order to reveal the files run the command
+    ```shell
+    git secret reveal
+    ```
+    which may prompt you to overwrite the secrets you may already have locally, do so to get the most up to date secrets.
+    >NOTE: using the `-f` flag will force the overwrite step so that you do not have to answer all the prompts
