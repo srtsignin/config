@@ -35,3 +35,5 @@ Our project is using the [git-secret](http://git-secret.io/) tool, which allows 
     git secret list
     ```
     and the output will show all the secrets currently being handled by `git-secret`
+
+#### Hiding/Revealing Secrets
