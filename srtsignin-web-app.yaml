@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: web-app
-        image: 'cjblink1/srtsignin-web-app:master-610c136fc021b24998b0d846036ba233616e1df3'
+        image: 'cjblink1/srtsignin-web-app:student-a0befc2e08325fd61a4a659afa03ada521b700d0'
         ports:
         - containerPort: 80
 ---
@@ -51,7 +51,7 @@ spec:
     spec:
       containers:
       - name: web-app
-        image: 'cjblink1/srtsignin-web-app:master-610c136fc021b24998b0d846036ba233616e1df3'
+        image: 'cjblink1/srtsignin-web-app:student-a0befc2e08325fd61a4a659afa03ada521b700d0'
         ports:
         - containerPort: 80
 ---
