@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: srtsignin-data-service
-        image: cjblink1/srtsignin-data-service:18202ae873f85161d94ee669eee94fde68285927
+        image: cjblink1/srtsignin-data-service:5468f1c6f8161bbd620ee2d9888f2e2915b88bd1
         ports:
         - containerPort: 3000
         volumeMounts:
@@ -58,7 +58,7 @@ spec:
     spec:
       containers:
       - name: srtsignin-data-service
-        image: cjblink1/srtsignin-data-service:18202ae873f85161d94ee669eee94fde68285927
+        image: cjblink1/srtsignin-data-service:5468f1c6f8161bbd620ee2d9888f2e2915b88bd1
         ports:
         - containerPort: 3000
         volumeMounts:
