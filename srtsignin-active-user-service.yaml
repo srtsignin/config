@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: srtsignin-active-user-service
-        image: cjblink1/srtsignin-active-user-service:master-ac12ed569dd57fba4120c8a4e30832ab6cb0f6d2
+        image: cjblink1/srtsignin-active-user-service:master-8f6ad0f309619d48c16599f4af30421ec3d0af41
         volumeMounts:
         - name: secrets
           mountPath: /config
@@ -58,7 +58,7 @@ spec:
     spec:
       containers:
       - name: srtsignin-active-user-service
-        image: cjblink1/srtsignin-active-user-service:master-ac12ed569dd57fba4120c8a4e30832ab6cb0f6d2
+        image: cjblink1/srtsignin-active-user-service:master-8f6ad0f309619d48c16599f4af30421ec3d0af41
         volumeMounts:
         - name: secrets
           mountPath: /config
