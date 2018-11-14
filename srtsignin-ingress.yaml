@@ -30,6 +30,10 @@ spec:
         backend:
           serviceName: srtsignin-active-user-service
           servicePort: 80
+      - path: /api/register
+        backend:
+          serviceName: srtsignin-registration-service
+          servicePort: 80
       - path: /
         backend:
           serviceName: srtsignin-web-app-service

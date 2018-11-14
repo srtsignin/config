@@ -8,8 +8,10 @@ kubectl create secret generic srtsignin-role-secret --from-file=./secrets/auth-k
 kubectl create secret generic srtsignin-cardfire-secret --from-file=./secrets/secrets-cf.properties
 kubectl create secret generic srtsignin-active-users-secret --from-file=./secrets/active-users-config.json
 kubectl create secret generic srtsignin-data-service-secret --from-file=./secrets/data-service-conf.json
+kubectl create secret generic srtsignin-registration-secret --from-file=./secrets/registration-config.json
 kubectl create secret generic srtsignin-role-secret -n stage --from-file=./stage-secrets/auth-keys.properties
 kubectl create secret generic srtsignin-cardfire-secret -n stage --from-file=./stage-secrets/secrets-cf.properties
 kubectl create secret generic srtsignin-active-users-secret -n stage --from-file=./stage-secrets/active-users-config.json
 kubectl create secret generic srtsignin-data-service-secret -n stage --from-file=./stage-secrets/data-service-conf.json
+kubectl create secret generic srtsignin-registration-secret -n stage --from-file=./stage-secrets/registration-config.json
 kubectl apply -f .
