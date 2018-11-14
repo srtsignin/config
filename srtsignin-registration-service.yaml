@@ -1,0 +1,86 @@
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: srtsignin-registration-service
+  annotations:
+    flux.weave.works/automated: 'true'
+spec:
+  replicas: 1
+  revisionHistoryLimit: 1
+  template:
+    metadata:
+      labels:
+        app: srtsignin-registration-service
+    spec:
+      containers:
+      - name: srtsignin-registration-service
+        image: cjblink1/srtsignin-registration-service:master-f8884a4ece346f132309ad25a52c8ce3eaa44222
+        volumeMounts:
+        - name: secrets
+          mountPath: /config
+        ports:
+        - containerPort: 3002
+      volumes:
+      - name: secrets
+        secret:
+          secretName: srtsignin-registration-secret
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: srtsignin-registration-service
+  labels:
+    name: srtsignin-registration-service
+spec:
+  ports:
+  - port: 80
+    targetPort: 3002
+    protocol: TCP
+  selector:
+    app: srtsignin-registration-service
+  type: ClusterIP
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: srtsignin-registration-service
+  annotations:
+    flux.weave.works/automated: 'true'
+  namespace: stage
+spec:
+  replicas: 1
+  revisionHistoryLimit: 1
+  template:
+    metadata:
+      labels:
+        app: srtsignin-registration-service
+    spec:
+      containers:
+      - name: srtsignin-registration-service
+        image: cjblink1/srtsignin-registration-service:master-f8884a4ece346f132309ad25a52c8ce3eaa44222
+        volumeMounts:
+        - name: secrets
+          mountPath: /config
+        ports:
+        - containerPort: 3002
+      volumes:
+      - name: secrets
+        secret:
+          secretName: srtsignin-registration-secret
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: srtsignin-registration-service
+  labels:
+    name: srtsignin-registration-service
+  namespace: stage
+spec:
+  ports:
+  - port: 80
+    targetPort: 3002
+    protocol: TCP
+  selector:
+    app: srtsignin-registration-service
+  type: ClusterIP

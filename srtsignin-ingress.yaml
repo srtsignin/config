@@ -5,7 +5,7 @@ metadata:
   annotations: 
     ingress.kubernetes.io/rewrite-target: /
     ingress.kubernetes.io/enable-cors: "true"
-    ingress.kubernetes.io/cors-allow-headers: "DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Authorization,AuthToken"
+    ingress.kubernetes.io/cors-allow-headers: "DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Authorization,AuthToken,RosefireToken,CardfireToken"
   namespace: default
 spec:
   tls:
@@ -30,6 +30,10 @@ spec:
         backend:
           serviceName: srtsignin-active-user-service
           servicePort: 80
+      - path: /api/register
+        backend:
+          serviceName: srtsignin-registration-service
+          servicePort: 80
       - path: /
         backend:
           serviceName: srtsignin-web-app-service
@@ -42,7 +46,7 @@ metadata:
   annotations: 
     ingress.kubernetes.io/rewrite-target: /
     ingress.kubernetes.io/enable-cors: "true"
-    ingress.kubernetes.io/cors-allow-headers: "DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Authorization,AuthToken"
+    ingress.kubernetes.io/cors-allow-headers: "DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Authorization,AuthToken,RosefireToken,CardfireToken"
   namespace: stage
 spec:
   tls:
