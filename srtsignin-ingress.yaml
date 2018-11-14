@@ -46,7 +46,7 @@ metadata:
   annotations: 
     ingress.kubernetes.io/rewrite-target: /
     ingress.kubernetes.io/enable-cors: "true"
-    ingress.kubernetes.io/cors-allow-headers: "DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Authorization,AuthToken"
+    ingress.kubernetes.io/cors-allow-headers: "DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Authorization,AuthToken,RosefireToken"
   namespace: stage
 spec:
   tls:
