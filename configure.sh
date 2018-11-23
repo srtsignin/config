@@ -1,8 +1,10 @@
 kubectl apply -f admin-user-cluster-role-binding.yaml
 kubectl apply -f admin-user-service-account.yaml
 helm init --service-account=admin-user
+helm repo add rook-beta https://charts.rook.io/beta
 helm repo update
 helm install --name cert-manager --namespace kube-system stable/cert-manager
+helm install --namespace rook-ceph-system rook-beta/rook-ceph
 kubectl apply -f srtsignin-namespaces.yaml
 kubectl create secret generic srtsignin-role-secret --from-file=./secrets/auth-keys.properties
 kubectl create secret generic srtsignin-cardfire-secret --from-file=./secrets/secrets-cf.properties
